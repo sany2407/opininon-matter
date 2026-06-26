@@ -4,11 +4,13 @@ import Link from "next/link";
 import me from "../public/assets/me.png";
 import heroImage from "../public/assets/image.png";
 import Image from "next/image";
-import { Search, SlidersHorizontal, ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getBlogs, subscribeNewsletter, getId } from "@/lib/api";
 import { Blog } from "@/lib/types";
 import { toast } from "sonner";
+import { GooeyInput } from "@/components/ui/gooey-input";
+import { Cover } from "@/components/ui/cover";
 
 export default function LandingPage() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -110,7 +112,7 @@ export default function LandingPage() {
 
               <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg mb-8 text-primary leading-[1.1] animate-fade-up-delay-1">
                 <span className="font-light italic">Opinions</span> Worth{" "}
-                <span className="font-bold border-b-4 border-electric-blue/30 pb-1">Reading</span>.{" "}
+                <Cover><span className="font-bold">Reading</span></Cover>.{" "}
                 <br />
                 <span className="font-normal opacity-80">Ideas Worth Discussing.</span>
               </h1>
@@ -135,13 +137,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Scroll Interaction Hint */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 animate-fade-in-delay">
-          <span className="font-label-sm text-[10px] uppercase tracking-[0.3em] text-on-surface-variant/40">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-primary to-transparent relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1/2 bg-electric-blue animate-scroll-pulse"></div>
-          </div>
-        </div>
+        {/* Scroll Interaction Hint removed */}
       </section>
 
       {/* Featured Articles (Bento Style) */}
@@ -265,14 +261,8 @@ export default function LandingPage() {
               <h2 className="font-display-lg text-headline-md mb-4">Latest Perspectives</h2>
               <p className="font-body-md text-on-surface-variant">The most recent observations from the laboratory and the keyboard.</p>
             </div>
-            <div className="flex gap-4 w-full md:w-auto">
-              <div className="relative flex-1 md:min-w-[300px]">
-                <Search size={20} className="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" />
-                <input className="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-electric-blue focus:outline-none rounded-none py-3 pl-10 pr-4 font-label-sm text-label-sm" placeholder="Search articles..." type="text" />
-              </div>
-              <button className="bg-primary p-3 flex items-center justify-center hover:opacity-80 transition-opacity">
-                <SlidersHorizontal size={20} className="text-on-primary" />
-              </button>
+            <div className="flex gap-4 w-full md:w-auto items-center">
+              <GooeyInput placeholder="Search articles..." collapsedWidth={130} expandedWidth={280} expandedOffset={45} />
             </div>
           </div>
 

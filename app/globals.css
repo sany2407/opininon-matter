@@ -16,6 +16,8 @@
     --color-outline-variant: var(--outline-variant);
     --color-secondary: var(--secondary);
     --color-electric-blue: var(--electric-blue);
+    --color-foreground: var(--foreground);
+    --color-border: var(--border);
 
     --font-body: "Inter", sans-serif;
     --font-display: "Source Serif 4", serif;
@@ -44,6 +46,8 @@
     --outline-variant: #c4c7c7;
     --secondary: #5d5f5f;
     --electric-blue: #3B82F6;
+    --foreground: #000000;
+    --border: #c4c7c7;
 }
 
 .dark {
@@ -61,6 +65,8 @@
     --outline-variant: #444748;
     --secondary: #a3a3a3;
     --electric-blue: #3B82F6;
+    --foreground: #ffffff;
+    --border: #444748;
 }
 
 @layer base {
