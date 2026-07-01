@@ -139,19 +139,119 @@ export default function ArticleContent({ blog }: ArticleContentProps) {
         </div>
       )}
 
-      {/* Article Body */}
-      <article
-        ref={articleRef}
-        className="article-prose max-w-article-max mx-auto px-margin-mobile md:px-0"
-      >
-        {blog.content ? (
-          <div dangerouslySetInnerHTML={{ __html: blog.content }} />
-        ) : (
-          <div>
-            <p>{blog.description}</p>
-          </div>
-        )}
-      </article>
+      {/* Article Body + Ad Sidebar */}
+      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div className="flex gap-12 items-start">
+          {/* Article */}
+          <article
+            ref={articleRef}
+            className="article-prose flex-1 min-w-0"
+          >
+            {blog.content ? (
+              <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+            ) : (
+              <div>
+                <p>{blog.description}</p>
+              </div>
+            )}
+          </article>
+
+          {/* Sticky Sidebar */}
+          <aside className="hidden xl:block w-72 flex-shrink-0">
+            <div className="sticky top-28 space-y-6">
+
+              {/* Sponsored Ad — Slice Credit Card */}
+              <div className="relative overflow-hidden rounded-2xl border border-pink-200/30 p-6 shadow-xl"
+                style={{ background: "linear-gradient(135deg, #2d0a2e 0%, #6b0f4e 40%, #c2185b 100%)" }}
+              >
+                {/* Glow accents */}
+                <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full blur-3xl pointer-events-none" style={{ background: "rgba(236,72,153,0.3)" }} />
+                <div className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full blur-2xl pointer-events-none" style={{ background: "rgba(168,85,247,0.25)" }} />
+
+                {/* Sponsored label */}
+                <span className="inline-block font-label-sm text-[9px] uppercase tracking-[0.2em] text-pink-200/50 mb-4">Sponsored</span>
+
+                {/* Card visual */}
+                <div className="relative w-full aspect-[16/10] rounded-2xl mb-5 p-4 shadow-2xl overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, #f472b6 0%, #ec4899 35%, #be185d 70%, #831843 100%)" }}
+                >
+                  {/* Shine overlay */}
+                  <div className="absolute inset-0 opacity-30"
+                    style={{ backgroundImage: "radial-gradient(ellipse at 25% 35%, rgba(255,255,255,0.4) 0%, transparent 55%), radial-gradient(ellipse at 75% 75%, rgba(255,255,255,0.15) 0%, transparent 45%)" }}
+                  />
+                  {/* Card circles decoration */}
+                  <div className="absolute -right-6 -bottom-6 w-28 h-28 rounded-full border-2 border-white/10" />
+                  <div className="absolute -right-2 -bottom-10 w-20 h-20 rounded-full border-2 border-white/10" />
+
+                  <div className="flex flex-col h-full justify-between relative z-10">
+                    <div className="flex items-center justify-between">
+                      <span className="font-display-lg text-white text-2xl font-black tracking-tighter">slice</span>
+                      {/* Mastercard-like circles */}
+                      <div className="flex items-center">
+                        <div className="w-7 h-7 rounded-full bg-red-400/80" />
+                        <div className="w-7 h-7 rounded-full bg-yellow-300/80 -ml-3" />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-label-sm text-[10px] text-pink-200/70 uppercase tracking-widest mb-1">Credit Card</p>
+                      <p className="font-label-sm text-sm text-white font-semibold tracking-[0.2em]">•••• •••• •••• 9011</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Offer text */}
+                <h3 className="font-headline-md text-[20px] text-white mb-2 leading-snug">
+                  Earn <span className="text-pink-300 font-bold">₹500</span> on sign up
+                </h3>
+                <p className="font-body-md text-[13px] text-pink-100/60 mb-4 leading-relaxed">
+                  Apply for the Slice Credit Card and get instant ₹500 cashback on your first transaction.
+                </p>
+
+                {/* Promo code */}
+                <div className="flex items-center gap-2 rounded-xl px-3 py-2.5 mb-5 border border-pink-300/20"
+                  style={{ background: "rgba(255,255,255,0.08)" }}
+                >
+                  <span className="font-label-sm text-[10px] text-pink-200/50 uppercase tracking-widest">Use code</span>
+                  <span className="font-label-sm text-sm text-pink-200 font-bold tracking-widest ml-auto select-all">SANYS99011</span>
+                </div>
+
+                {/* CTA */}
+                <a
+                  href="https://slice.bank.in/t?c=FQ_V8_K&ic=SANYS99011"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-white text-center py-3.5 rounded-xl font-label-sm text-label-sm uppercase tracking-widest transition-all duration-200 active:scale-95 shadow-lg relative overflow-hidden group"
+                  style={{ background: "linear-gradient(90deg, #ec4899, #a855f7)" }}
+                >
+                  <span className="relative z-10">Sign Up Now →</span>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    style={{ background: "linear-gradient(90deg, #be185d, #7c3aed)" }}
+                  />
+                </a>
+
+                <p className="text-center font-label-sm text-[10px] text-pink-200/30 mt-3">
+                  *T&C apply. Limited time offer.
+                </p>
+              </div>
+
+              {/* Newsletter mini widget */}
+              <div className="rounded-2xl border border-outline-variant/20 bg-surface-container-lowest p-5">
+                <h4 className="font-headline-md text-[16px] text-primary mb-1">Stay in the loop</h4>
+                <p className="font-body-md text-[13px] text-on-surface-variant mb-4">Get fresh articles every week.</p>
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  className="w-full bg-surface-container-low border border-outline-variant/30 rounded-lg px-3 py-2 font-body-md text-[13px] text-primary focus:border-electric-blue focus:ring-1 focus:ring-electric-blue focus:outline-none mb-2"
+                />
+                <button className="w-full bg-primary text-on-primary py-2.5 rounded-lg font-label-sm text-label-sm uppercase tracking-widest hover:bg-electric-blue transition-colors">
+                  Subscribe
+                </button>
+              </div>
+
+            </div>
+          </aside>
+        </div>
+      </div>
 
       {/* Bottom Action Bar */}
       <div className="max-w-article-max mx-auto px-margin-mobile md:px-0 mt-16 pt-8 border-t border-outline-variant/20">
